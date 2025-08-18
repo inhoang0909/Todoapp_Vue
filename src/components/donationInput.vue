@@ -28,7 +28,7 @@
           color="primary"
           size="large"
           :disabled="donationAmount <= 0"
-        >name
+        >
           Donate
         </v-btn>
       </div>
@@ -39,6 +39,10 @@
 
       <div v-if="donationAmount > 0" class="level-info">
         You will achieve:
+        <!-- helper function
+        1. getDonationLevel: Returns the donation level based on the amount
+        2. getLevelName: Returns the level name based on the level
+        -->
         {{ getLevelName(getDonationLevel(donationAmount)) }} Level
         {{ getDonationLevel(donationAmount) }}
       </div>
@@ -61,6 +65,8 @@ export default {
       ],
     };
   },
+  // watch for changes of variable or reactive data especially for selectedLevel
+  // auto react to changes
   watch: {
     selectedLevel(newLevel) {
       if (newLevel === 1) {
@@ -72,6 +78,8 @@ export default {
       }
     },
   },
+  //function to handle logic action, call events
+  // be called when user click on button or enter 
   methods: {
     submitDonation() {
       if (this.donationAmount > 0) {

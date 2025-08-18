@@ -37,7 +37,7 @@
     </v-card-text>
   </v-card>
 </template>
-
+<!-- Options API -->
 <script>
 import { formatCurrency } from "../utils/formatCurrency";
 
@@ -81,3 +81,45 @@ export default {
   },
 };
 </script>
+<!-- Composition API -->
+<!-- <script setup>
+import { computed } from 'vue';
+import { formatCurrency } from '../utils/formatCurrency';
+
+const props = defineProps({
+  donation: {
+    type: Object,
+    required: true,
+    default: () => ({ amount: 0, id: null }),
+  },
+});
+
+const emit = defineEmits(['remove']);
+
+const level = computed(() => {
+  const amt = props.donation?.amount || 0;
+  if (amt <= 10) return 1;
+  if (amt <= 20) return 2;
+  return 3;
+});
+
+const levelImage = computed(() => {
+  return {
+    1: '🥉',
+    2: '🥈',
+    3: '🥇',
+  }[level.value] || '🥉';
+});
+
+const levelName = computed(() => {
+  return {
+    1: 'Bronze',
+    2: 'Silver',
+    3: 'Gold',
+  }[level.value] || 'Bronze';
+});
+
+const formattedAmount = computed(() => {
+  return formatCurrency(props.donation?.amount || 0);
+});
+</script> -->

@@ -9,6 +9,7 @@
   </v-radio-group>
 </template>
 
+<!-- Options API -->
 <script>
 export default {
   name: "DonationFilter",
@@ -21,3 +22,5 @@ export default {
   emits: ["update:selectedFilter"],
 };
 </script>
+
+<!-- Composition API -->
